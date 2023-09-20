@@ -47,6 +47,11 @@ const GalleryImage = styled.img`
   max-height: 350px;
   min-height: 250px;
   position: relative;
+  cursor: pointer;
+  :hover{
+    border: 1px dashed gray;
+    cursor: pointer;
+  }
   @media only screen and (max-width: 420px) {
     max-height: 200px;
     min-height: 150px;
@@ -97,7 +102,7 @@ const SortableImage = ({ image }) => {
   const style = {
     transition,
     transform: CSS.Transform.toString(transform),
-
+    
   };
   return (
     <GalleryImage
@@ -185,6 +190,12 @@ const Gallery = () => {
     fetchInitialImages();
   }, []); // Empty dependency array to run on component mount
 
+  function handleDragStart(event) {
+    const {active} = event;
+    
+    setActiveId(active.id);
+  }
+
   const onDragEnd = (event) => {
     const { active, over } = event;
     if (active.id === over.id) {
@@ -260,6 +271,7 @@ const Gallery = () => {
   
             <DndContext
             collisionDetection={closestCenter}
+            
             onDragEnd={onDragEnd}
             sensors={sensors}
           >
@@ -268,6 +280,9 @@ const Gallery = () => {
                 <SortableImage key={image.id} image={image} />
               ))}
             </SortableContext>
+            <DragOverlay>
+        {activeId ? <Item id={activeId} /> : null}
+      </DragOverlay>
           </DndContext>
         )}
       </ImageContainer>
