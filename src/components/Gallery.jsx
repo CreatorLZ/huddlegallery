@@ -183,7 +183,7 @@ const Gallery = () => {
       return arrayMove(images, oldIndex, newIndex);
     });
   };
-  const TouchSensor = useSensor(TouchSensor, {
+  const touchSensor = useSensor(TouchSensor, {
     // Press delay of 250ms, with tolerance of 5px of movement
     activationConstraint: {
       delay: 250,
@@ -195,7 +195,7 @@ const Gallery = () => {
   
   const sensors = useSensors(
     useSensor(MouseSensor),
-    TouchSensor,
+    touchSensor,
     useSensor(KeyboardSensor)
   );
 
