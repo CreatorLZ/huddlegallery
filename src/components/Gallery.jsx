@@ -183,10 +183,19 @@ const Gallery = () => {
       return arrayMove(images, oldIndex, newIndex);
     });
   };
+  const TouchSensor = useSensor(TouchSensor, {
+    // Press delay of 250ms, with tolerance of 5px of movement
+    activationConstraint: {
+      delay: 250,
+      tolerance: 5,
+    },
+  });
+
   //sensors to configure drag and drop on different device type
+  
   const sensors = useSensors(
     useSensor(MouseSensor),
-    useSensor(TouchSensor),
+    TouchSensor,
     useSensor(KeyboardSensor)
   );
 
