@@ -113,7 +113,7 @@ const Login = () => {
               {errorMessage}
             </span>
           )}
-          <Button style={{background:"pink",color:"white", borderRadius:"5px", padding:"10px 20px"}}>
+          <Button style={{background:"#f542a7",color:"white", borderRadius:"5px", padding:"10px 20px"}}>
             {loading ? (
               <AnimatedLoader src="./images/loading-gif2.gif" alt="loading" />
             ) : (
