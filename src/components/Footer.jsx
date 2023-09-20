@@ -30,11 +30,11 @@ const Footer = () => {
             </ul>
             <Socialicons />
         </Flex>
-        <p> &copy; Copyright 2018 Huddle. All rights reserved.</p>
+        <p> &copy; Copyright 2023 Isaac C Anyim. All rights reserved.</p>
       </Container>
       <Footercard>
         <h2>
-            Ready To Build Your Community?
+            Ready To DND?
         </h2>
         <Button  bg>Get started for free</Button>
       </Footercard>

@@ -1,20 +1,20 @@
 const content = [
     {
       id: 1,
-      title: 'Grow Together',
-      body: 'Generate meaningful discussions with your audience and build a strong, loyal community. Think of the insightful conversations you miss out on with a feedback form.',
+      title: 'Unleash Your Inner Artist',
+      body: 'Transform your digital space into a canvas of inspiration. Our drag-and-drop functionality lets you effortlessly arrange your images, allowing you to curate stunning visual stories that captivate and inspire.',
       image: 'illustration-grow-together.svg',
     },
     {
       id: 2,
-      title: 'Flowing Conversations',
-      body: "You wouldn't paginate a conversation in real life, so why do it online? Our threads have just-in-time loading for a more natural flow.",
+      title: 'Seamless Sorting',
+      body: "you have the power to arrange your images exactly how you envision them. Reimagine the possibilities and redefine your gallery's flow.",
       image: 'illustration-flowing-conversation.svg',
     },
     {
       id: 3,
-      title: 'Your Users',
-      body: "It takes no time at all to integrate Huddle with your app's authentication solution. This means, once signed in to your app, your users can start chatting immediately.",
+      title: 'Endless Possibilities',
+      body: "From personal portfolios to collaborative projects, our image gallery empowers you to arrange and rearrange with ease. Embrace the freedom to create and innovate like never before.",
       image: 'illustration-your-users.svg',
     },
   ]

@@ -13,13 +13,10 @@ const Header = () => {
       <Flex>
         <div>
             <h1 style={{marginBottom:"20px"}}>
-            Build The Community Your Fans <br/> Will Love
+            Where Creativity<br/> Knows No Bounds  
             </h1>
             <p style={{marginBottom:"20px"}}>
-            Huddle re-imagines the way we build communities. You have a <br/>
-            voice, but so does your audience. 
-            Create connections with <br/> your
-             users as you engage in genuine discussion. 
+            Explore a world of visual creativity with our image gallery. Drag and drop your images to curate your own unique gallery experience. Your creativity, your gallery, your way.
             </p>
             <Button bg>Get Started For Free</Button>
         </div>
