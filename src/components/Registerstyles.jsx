@@ -19,10 +19,10 @@ padding: 12px 24px;
 gap: 4px;
 width: 550px;
 height: 56px;
-border: 0.2px solid pink;
+border: 0.2px solid #f542a7 ;
 border-radius: 4px;
     :focus{
-        outline: 2px solid  pink;
+        outline: 2px solid #f542a7 ;
     }
     
 }
