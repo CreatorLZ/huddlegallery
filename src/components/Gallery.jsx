@@ -79,8 +79,15 @@ const Search = styled.div`
     display: flex;
     width: 100%;
     gap: 5px;
+    button{
+      background: black;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: cursive;
+    }
     input{
-      width: 80%;
+      width: 85%;
       padding: 10px;
     }
   }
