@@ -66,7 +66,7 @@ const Search = styled.div`
   margin-bottom: 20px;
   align-items: center;
   justify-content: center;
-  background: #f3aeba;
+  background:#f542a7 ;
   form{
     display: flex;
     width: 100%;
