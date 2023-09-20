@@ -84,7 +84,7 @@ const Search = styled.div`
       color: white;
       font-weight: 600;
       cursor: pointer;
-      font-family: cursive;
+      
     }
     input{
       width: 85%;
