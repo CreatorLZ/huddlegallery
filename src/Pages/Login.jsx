@@ -3,6 +3,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  AuthErrorCodes
 } from "firebase/auth";
 import { auth } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
@@ -31,6 +32,7 @@ export const Container = styled.div`
 
 const Login = () => {
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
@@ -72,8 +74,13 @@ const Login = () => {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/gallery");
     } catch (error) {
+      console.log(error.message)
+      console.log(error.code)
       setError(true);
+      setErrorMessage(error.code.substring(5));
       setLoading(false);
+     
+
     }
   };
 
@@ -103,10 +110,10 @@ const Login = () => {
                 margin: "20px",
               }}
             >
-              something went wrong...
+              {errorMessage}
             </span>
           )}
-          <Button>
+          <Button style={{background:"pink",color:"white", borderRadius:"5px", padding:"10px 20px"}}>
             {loading ? (
               <AnimatedLoader src="./images/loading-gif2.gif" alt="loading" />
             ) : (

@@ -8,6 +8,7 @@ import { MouseSensor, TouchSensor, useSensor } from "@dnd-kit/core";
 import {
   SortableContext,
   arrayMove,
+  rectSortingStrategy,
   rectSwappingStrategy,
   useSortable,
   verticalListSortingStrategy,
@@ -33,7 +34,7 @@ const ImageContainer = styled.div`
   @media only screen and (max-width: 420px) {
     display: flex;
     flex-direction: column;
-    padding: 0px;
+    padding: 0px 15px;
   }
 `;
 
@@ -42,10 +43,10 @@ const GalleryImage = styled.img`
   height: auto; /* Maintain the aspect ratioo of the images */
   object-fit: cover;
   max-height: 350px;
-  min-height: 300px;
+  min-height: 250px;
   @media only screen and (max-width: 420px) {
     max-height: 200px;
-    min-height: 180px;
+    min-height: 150px;
   }
 `;
 
@@ -235,7 +236,7 @@ const Gallery = () => {
           onDragEnd={onDragEnd}
           sensors={sensors}
         >
-          <SortableContext items={images} strategy={rectSwappingStrategy}>
+          <SortableContext items={images} strategy={rectSortingStrategy}>
             {images.map((image) => (
               <SortableImage key={image.id} image={image} />
             ))}
