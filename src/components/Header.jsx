@@ -18,7 +18,7 @@ const Header = () => {
             <p style={{marginBottom:"20px"}}>
             Explore a world of visual creativity with our image gallery. Drag and drop your images to curate your own unique gallery experience. Your creativity, your gallery, your way.
             </p>
-            <Button bg>Get Started For Free</Button>
+            <Link to="/login"> <Button bg>Get Started For Free</Button></Link>
         </div>
         <Image src='./images/illustration-mockups.svg' alt='' style={{flex:"1"}}/>
       </Flex>

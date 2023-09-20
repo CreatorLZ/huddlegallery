@@ -2,6 +2,7 @@ import React from 'react'
 import { Button, Container, Flex } from '../Globalstyles'
 import { Footercard, StyledFooter } from './Footerstyles'
 import Socialicons from './Socialicons'
+import { Link } from 'react-router-dom'
 
 
 const Footer = () => {
@@ -36,7 +37,7 @@ const Footer = () => {
         <h2>
             Ready To DND?
         </h2>
-        <Button  bg>Get started for free</Button>
+        <Link to="/login"> <Button  bg>Get started for free</Button></Link>
       </Footercard>
      </StyledFooter>
   )

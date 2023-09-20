@@ -1,10 +1,11 @@
 import {
   DndContext,
+  DragOverlay,
   KeyboardSensor,
   closestCenter,
   useSensors,
 } from "@dnd-kit/core";
-import { MouseSensor, TouchSensor, useSensor } from "@dnd-kit/core";
+import { MouseSensor, TouchSensor, useSensor,useDraggable } from "@dnd-kit/core";
 import {
   SortableContext,
   arrayMove,
@@ -20,6 +21,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Logo, Nav } from "../Globalstyles";
 import { Link } from "react-router-dom";
+import Skeletonloader from "./Skeletonloader";
 
 const GalleryContainer = styled.div`
   display: flex;
@@ -44,6 +46,7 @@ const GalleryImage = styled.img`
   object-fit: cover;
   max-height: 350px;
   min-height: 250px;
+  position: relative;
   @media only screen and (max-width: 420px) {
     max-height: 200px;
     min-height: 150px;
@@ -81,12 +84,20 @@ const Search = styled.div`
   }
 `
 
+const Add = styled.img`
+  position: absolute;
+  top:0;
+  left: 20px;
+`
+
 const SortableImage = ({ image }) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({ id: image.id });
+    
   const style = {
     transition,
     transform: CSS.Transform.toString(transform),
+
   };
   return (
     <GalleryImage
@@ -96,7 +107,7 @@ const SortableImage = ({ image }) => {
       {...listeners}
       src={image.src}
       alt={image.id}
-    />
+    /> 
   );
 };
 
@@ -104,6 +115,7 @@ const Gallery = () => {
   const [images, setImages] = useState([]);
   const [searchQuery, setSearchQuery] = useState(""); // State variable for search query
   const [noResults, setNoResults] = useState(false); // State variable to track no results
+  const [activeId, setActiveId] = useState(null);
 
 
   useEffect(() => {
@@ -207,45 +219,61 @@ const Gallery = () => {
     setSearchQuery(formData.get("search"));
     
   };
-  return (
-    <GalleryContainer>
+    return (
+      <GalleryContainer>
             <Nav style={{padding:"10px"}}>
             <Link to="/"> <Logo src='./images/logo.svg' alt='logo'/></Link>
           {/* <Link to="/gallery"> <Button  color>Try It Free</Button></Link> */}
       </Nav>
       <Search>
+
       <form onSubmit={handleSearch}>
+
       <input
+
         type="text"
+
         placeholder="search images"
+
         value={searchQuery}
+
         onChange={(e) => setSearchQuery(e.target.value)}
+
       />
+
       <button type="submit">Search</button>
+
       </form>
+
       </Search>
+      {/* ... */}
       {noResults ? (
         <Noresults>
           <p>No results found for '{searchQuery}'</p>
         </Noresults>
-        ) : (
-
-      <ImageContainer>
-        <DndContext
-          collisionDetection={closestCenter}
-          onDragEnd={onDragEnd}
-          sensors={sensors}
-        >
-          <SortableContext items={images} strategy={rectSortingStrategy}>
-            {images.map((image) => (
-              <SortableImage key={image.id} image={image} />
-            ))}
-          </SortableContext>
-        </DndContext>
+      ) : (
+        <ImageContainer>
+          {/* Conditionally render the skeleton loader */}
+          {images.length === 0 ? (
+            <Skeletonloader count={50} /> // Adjust the count as needed
+          ) : (
+  
+            <DndContext
+            collisionDetection={closestCenter}
+            onDragEnd={onDragEnd}
+            sensors={sensors}
+          >
+            <SortableContext items={images} strategy={rectSortingStrategy}>
+              {images.map((image) => (
+                <SortableImage key={image.id} image={image} />
+              ))}
+            </SortableContext>
+          </DndContext>
+        )}
       </ImageContainer>
-      )}
-    </GalleryContainer>
+    )}
+  </GalleryContainer>
   );
-};
-
-export default Gallery;
+  };
+  
+  export default Gallery;
