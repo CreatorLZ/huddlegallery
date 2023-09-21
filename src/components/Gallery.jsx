@@ -30,7 +30,7 @@ const GalleryContainer = styled.div`
 
 const ImageContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 images per row */
+  grid-template-columns: repeat(4, 1fr); /* 4 images per row */
   gap: 10px;
   padding: 5px 5px;
   @media only screen and (max-width: 420px) {
