@@ -38,7 +38,30 @@ const ImageContainer = styled.div`
     flex-direction: column;
     padding: 0px 15px;
   }
-`;
+  `;
+  const Imagediv=styled.div`
+     width: 100%;
+  height: auto; /* Maintain the aspect ratioo of the images */
+  object-fit: cover;
+  max-height: 350px;
+  min-height: 250px;
+  position: relative;
+  cursor: pointer;
+  & > img:first-child {
+    opacity: 0;
+  }
+  :hover{
+    border: 2px dashed gray;
+    cursor: pointer;
+    & > img:first-child {
+    opacity: 1;
+  }
+  }
+  @media only screen and (max-width: 420px) {
+    max-height: 200px;
+    min-height: 150px;
+  }
+  `
 
 const GalleryImage = styled.img`
   width: 100%;
@@ -46,10 +69,8 @@ const GalleryImage = styled.img`
   object-fit: cover;
   max-height: 350px;
   min-height: 250px;
-  position: relative;
   cursor: pointer;
   :hover{
-    border: 1px dashed gray;
     cursor: pointer;
   }
   @media only screen and (max-width: 420px) {
@@ -98,8 +119,11 @@ const Search = styled.div`
 
 const Add = styled.img`
   position: absolute;
-  top:0;
-  left: 20px;
+  top:-15px;
+  right: 0px;
+  width: 30px;
+  height: 30px;
+  /* display: none; */
 `
 
 const SortableImage = ({ image }) => {
@@ -284,7 +308,10 @@ const Gallery = () => {
           >
             <SortableContext items={images} strategy={rectSortingStrategy}>
               {images.map((image) => (
-                <SortableImage key={image.id} image={image} />
+                <Imagediv>
+                  <Add src="/images/icons8-add-48.png" alt="add" />
+                  <SortableImage key={image.id} image={image} />
+                </Imagediv>
               ))}
             </SortableContext>
             <DragOverlay>
