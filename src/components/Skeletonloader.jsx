@@ -4,7 +4,7 @@ import "./animations.css";
 
 const SkeletonContainer = styled.div`
  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 images per row */
+  grid-template-columns: repeat(3, 1fr); /* 3 images per row */
   gap: 10px;
   padding: 5px 5px;
   @media only screen and (max-width: 420px) {
