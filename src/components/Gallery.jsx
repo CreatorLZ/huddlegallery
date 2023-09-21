@@ -125,6 +125,16 @@ const Add = styled.img`
   height: 30px;
   /* display: none; */
 `
+const Tags = styled.div`
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+  color: white;
+  p{
+    font-weight: 400;
+    font-size: 16px;
+  }
+`
 
 const SortableImage = ({ image }) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
@@ -152,6 +162,7 @@ const Gallery = () => {
   const [searchQuery, setSearchQuery] = useState(""); // State variable for search query
   const [noResults, setNoResults] = useState(false); // State variable to track no results
   const [activeId, setActiveId] = useState(null);
+  const [tags, setTags] = useState([]);
 
 
   useEffect(() => {
@@ -173,8 +184,11 @@ const Gallery = () => {
         const fetchedImages = response.data.hits.map((hit) => ({
           id: hit.id.toString(),
           src: hit.largeImageURL,
+          tags: hit.tags,
         }));
         setImages(fetchedImages);
+        setTags(fetchedImages.map((image) => image.tags));
+        console.log(tags)
         
       } catch (error) {
         console.error("Error fetching images from Pixabay:", error);
@@ -308,9 +322,10 @@ const Gallery = () => {
           >
             <SortableContext items={images} strategy={rectSortingStrategy}>
               {images.map((image) => (
-                <Imagediv>
-                  <Add src="/images/icons8-add-48.png" alt="add" />
+                <Imagediv key={image.id}>
+                  <Add src= "/images/icons8-add-48.png" alt="add" />
                   <SortableImage key={image.id} image={image} />
+                  {tags.includes(image.id) && <Tags><p>{image.tags}</p></Tags> }
                 </Imagediv>
               ))}
             </SortableContext>
