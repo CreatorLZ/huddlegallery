@@ -24,7 +24,7 @@ const SkeletonImage = styled.div`
   @media only screen and (max-width: 420px) {
     max-height: 200px;
     min-height: 150px;
-    width: 150px;
+    width: 100%;
   }
 `;
 
