@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import "./animations.css";
 
 const SkeletonContainer = styled.div`
  display: grid;
@@ -21,6 +22,8 @@ const SkeletonImage = styled.div`
   max-height: 350px;
   min-height: 250px;
   position: relative;
+  animation: loadingAnimation 1s infinite; 
+
   @media only screen and (max-width: 420px) {
     max-height: 200px;
     min-height: 150px;
