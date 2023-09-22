@@ -31,7 +31,7 @@ const GalleryContainer = styled.div`
 const ImageContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 images per row */
-  gap: 10px;
+  gap: 50px;
   padding: 5px 5px;
   @media only screen and (max-width: 420px) {
     display: flex;
@@ -46,6 +46,8 @@ const ImageContainer = styled.div`
   max-height: 350px;
   min-height: 250px;
   position: relative;
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
   & > img:first-child {
     opacity: 0;
@@ -65,7 +67,7 @@ const ImageContainer = styled.div`
 
 const GalleryImage = styled.img`
   width: 100%;
-  height: auto; /* Maintain the aspect ratioo of the images */
+  height: 80%; /* Maintain the aspect ratioo of the images */
   object-fit: cover;
   max-height: 350px;
   min-height: 250px;
@@ -127,9 +129,9 @@ const Add = styled.img`
 `
 const Tags = styled.div`
   display: flex;
-  position: absolute;
-  bottom: 20px;
-  color: white;
+  height: fit-content;
+  color: black;
+  z-index: 2;
   p{
     font-weight: 400;
     font-size: 16px;
@@ -289,7 +291,7 @@ const Gallery = () => {
 
         type="text"
 
-        placeholder="search images"
+        placeholder="search images by tags"
 
         value={searchQuery}
 
@@ -325,7 +327,11 @@ const Gallery = () => {
                 <Imagediv key={image.id}>
                   <Add src= "/images/icons8-add-48.png" alt="add" />
                   <SortableImage key={image.id} image={image} />
-                  {tags.includes(image.id) && <Tags><p>{image.tags}</p></Tags> }
+                  <Tags>
+      {image.tags?.split(', ').map((tag, index) => (
+        <p key={index}>{tag} ,</p>
+      ))}
+    </Tags> 
                 </Imagediv>
               ))}
             </SortableContext>
